@@ -48,13 +48,14 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
     position: relative; padding: 120px 0; min-height: 90vh;
     display: flex; align-items: center; justify-content: center; text-align: center;
     overflow: hidden; 
-    /* CHANGED: Animated Blue Gradient Background */
+    
+    /* UPDATED: Moving Blue/Black Gradient Background */
     background: linear-gradient(300deg, #000000, #050a14, #001a33, #000000);
     background-size: 180% 180%;
     animation: gradientAnimation 12s ease infinite;
 }
 
-/* Animation Keyframes for Hero Background */
+/* NEW: Keyframes for Background Animation */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -118,9 +119,9 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
 .step-highlight {
     color: var(--primary) !important;
     font-weight: 700;
-    font-size: 1.5rem !important; /* Larger font */
+    font-size: 1.5rem !important;
     margin-bottom: 25px !important;
-    font-family: 'Rajdhani', sans-serif; /* Matching the image style */
+    font-family: 'Rajdhani', sans-serif;
     line-height: 1.3;
 }
 

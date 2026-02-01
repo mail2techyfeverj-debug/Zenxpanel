@@ -1,26 +1,30 @@
 :root {
-    /* Using slightly transparent backgrounds for cards so the main gradient shines through */
-    --card-bg: rgba(10, 15, 20, 0.85); 
+    /* Made cards semi-transparent to let the seamless background show through */
+    --card-bg: rgba(15, 20, 25, 0.7); 
     --primary: #00acff;
     --primary-dark: #008ecc;
     --danger: #ff4747; 
     --text-white: #ffffff;
     --text-gray: #b0b0b0;
-    --border: rgba(255, 255, 255, 0.1);
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-/* MAJOR CHANGE: Body now holds the Global Gradient Animation. 
-   This ensures the "Synced" look across the entire website.
+/* FIXED SYNCED BACKGROUND:
+   - "fixed" keeps the gradient in place while you scroll.
+   - This creates the illusion that the Navbar and Hero are one single piece.
+   - Deep Black mixed with Royal Blue.
 */
 body {
-    background: linear-gradient(300deg, #000205, #000b1a, #00162b, #000205);
-    background-size: 400% 400%;
-    animation: gradientBG 18s ease infinite;
+    background: linear-gradient(135deg, #000000 0%, #000814 40%, #001233 70%, #000000 100%);
+    background-size: 300% 300%;
+    background-attachment: fixed; /* THIS IS THE KEY FIX */
+    animation: gradientBG 15s ease infinite;
     color: var(--text-white);
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 @keyframes gradientBG {
@@ -43,14 +47,17 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
 .text-gradient { color: var(--primary); text-shadow: 0 0 25px rgba(0, 172, 255, 0.6); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* NAVBAR: Changed to Transparent/Glassmorphism 
-   This removes the "Cheap Black Box" look and blends with the gradient.
+/* NAVBAR MERGE:
+   - Removed 'background-color' (It is now transparent).
+   - Removed 'border-bottom' (This removes the separator line).
+   - It now sits directly on the body background.
 */
 .navbar {
     display: flex; justify-content: space-between; align-items: center; padding: 25px 40px;
-    background: rgba(0, 0, 0, 0.2); /* Semi-transparent */
-    backdrop-filter: blur(10px); /* Glass effect */
-    position: relative; border-bottom: 1px solid rgba(255, 255, 255, 0.05); z-index: 100;
+    background: transparent; /* Totally transparent to merge */
+    position: relative; 
+    border-bottom: none; /* REMOVED THE LINE */
+    z-index: 100;
 }
 .logo { font-size: 1.8rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
 .brand-x { color: var(--primary); font-size: 2rem; }
@@ -59,11 +66,11 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
 .nav-link:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
 /* --- HERO SECTION --- */
-/* Removed background here so it uses the Body's global gradient */
 .hero {
     position: relative; padding: 120px 0; min-height: 90vh;
     display: flex; align-items: center; justify-content: center; text-align: center;
     overflow: hidden; 
+    /* No background here, it uses the Body's fixed background */
 }
 
 .hero-content { position: relative; z-index: 2; }
@@ -104,7 +111,7 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
 .setup-box {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    backdrop-filter: blur(10px); /* Premium Blur */
+    backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 40px;
     text-align: center;
@@ -155,13 +162,13 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
 .cube-background {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 100%; height: 100%; z-index: 1; pointer-events: none;
-    display: flex; justify-content: center; align-items: center; perspective: 1000px; opacity: 0.2; /* Slightly increased visibility */
+    display: flex; justify-content: center; align-items: center; perspective: 1000px; opacity: 0.2; 
 }
 .cube-container { width: 350px; height: 350px; transform-style: preserve-3d; animation: rotateCube 25s linear infinite; }
 .cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; }
 .face {
     position: absolute; width: 350px; height: 350px; border: 2px solid var(--primary);
-    background: rgba(0, 172, 255, 0.02); /* Slight tint */
+    background: rgba(0, 172, 255, 0.02); 
     box-shadow: 0 0 30px rgba(0, 172, 255, 0.1) inset;
 }
 .front  { transform: translateZ(175px); }
@@ -242,7 +249,7 @@ h1, h2, h3, .logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-
 }
 
 /* Reviews */
-.reviews { background: transparent; } /* Transparent to show body gradient */
+.reviews { background: transparent; }
 .review-card { background: var(--card-bg); padding: 30px; border-radius: 10px; border: 1px solid var(--border); backdrop-filter: blur(5px); }
 .stars { color: var(--primary); margin-bottom: 10px; }
 
